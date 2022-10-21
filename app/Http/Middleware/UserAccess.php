@@ -16,14 +16,16 @@ class UserAccess
      */
     public function handle(Request $request, Closure $next, $userType)
     {
-        if(auth()->user()->type == 1){
-            redirect()->route('admin.home');
+        if(auth()->user()->type === 1){
+             redirect()->route('admin.home');
             return $next($request);
-        }elseif(auth()->user()->type == 0){
+        }
+        
+        elseif(auth()->user()->type === 0){
             redirect()->route('home');
             return $next($request);
         }
-        elseif(auth()->user()->type == 2){
+        elseif(auth()->user()->type === 2){
             redirect()->route('manager.home');
             return $next($request);
         }

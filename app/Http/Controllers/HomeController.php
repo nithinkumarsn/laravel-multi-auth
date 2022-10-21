@@ -34,6 +34,9 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
+        if(auth()->user()->type !== 1){
+            return response()->json(['You do not have permission to access for this page.']);
+        }
         return view('adminHome');
     }
   
@@ -44,6 +47,9 @@ class HomeController extends Controller
      */
     public function managerHome()
     {
+        if(auth()->user()->type !== 2){
+            return response()->json(['You do not have permission to access for this page.']);
+        }
         return view('managerHome');
     }
 }
